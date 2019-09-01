@@ -3,8 +3,10 @@ class GardenSerializer < ActiveModel::Serializer
 
 	def env_measurements 
   	self.object.env_measurements.map do |measurement|
-  		{soilMoisture: measurement.soil_moisture, 
-			soilTemperature: measurement.soil_temperature}
+  		{id: measurement.id,
+			soilMoisture: measurement.soil_moisture, 
+			soilTemperature: measurement.soil_temperature,
+			createdAt: measurement.created_at.strftime("%F %T")}
     end 
   end 
 end
