@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :env_measurement do
-    soil_temperature { 1.5 }
-    soil_moisture { 1.5 }
+    association :garden, factory: :garden
+    sequence(:soil_temperature) { |n| 58 + (n / 2) }
+    sequence(:soil_moisture) { |n| 89 - (n / 2) }
   end
 end
