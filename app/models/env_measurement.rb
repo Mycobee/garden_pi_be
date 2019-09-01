@@ -1,0 +1,2 @@
+class EnvMeasurement < ApplicationRecord
+end
