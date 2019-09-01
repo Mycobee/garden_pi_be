@@ -8,7 +8,7 @@ class GardensController < ApplicationController
     render json: @gardens
   end
 
-  # GET /gardens/1
+  # GET /gardens/:id
   def show
     render json: @garden
   end
@@ -24,7 +24,7 @@ class GardensController < ApplicationController
     end
   end
 
-  # PATCH/PUT /gardens/1
+  # PATCH/PUT /gardens/:id
   def update
     if @garden.update(garden_params)
       render json: @garden
@@ -33,7 +33,7 @@ class GardensController < ApplicationController
     end
   end
 
-  # DELETE /gardens/1
+  # DELETE /gardens/:id
   def destroy
     @garden.destroy
   end
