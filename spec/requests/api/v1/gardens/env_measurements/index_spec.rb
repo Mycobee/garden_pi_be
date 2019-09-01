@@ -22,5 +22,11 @@ describe "env_measurements api", type: :request do
 		expect(garden_data[:garden][:env_measurements].first[:soilTemperature]).to eq(@em_1.soil_temperature)
 		expect(garden_data[:garden][:env_measurements].last[:soilMoisture]).to eq(@em_8.soil_moisture)
 	end
+
+	it "returns 404 for a garden not in the DB" do
+		expect{
+			get "/api/v1/gardens/#{@garden.id + 1}/env_measurements"
+		}.to raise_error(ActionController::RoutingError)
+	end
 end
 
