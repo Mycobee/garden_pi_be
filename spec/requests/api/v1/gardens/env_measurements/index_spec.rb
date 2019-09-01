@@ -14,7 +14,7 @@ describe "env_measurements api", type: :request do
 	end
 	
 	it "Sends a garden and its associated env_measurements" do
-		get garden_env_measurements_path(@garden)	
+		get "/api/v1/gardens/#{@garden.id}/env_measurements"
 
 		expect(response).to have_http_status(200)
 	end
