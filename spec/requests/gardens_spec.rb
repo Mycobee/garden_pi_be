@@ -6,11 +6,12 @@ RSpec.describe "Gardens", type: :request do
 			@garden = create(:garden)		
 		end
 
-    it "Returns successful" do
- binding.pry
+    it "Returns successful with associated env_measurements" do
       get garden_path(@garden)
-
+ 
       expect(response).to have_http_status(200)
+		
+			ga
     end
   end
 end
