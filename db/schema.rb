@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_01_183146) do
+ActiveRecord::Schema.define(version: 2019_09_01_194212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "env_measurements", force: :cascade do |t|
+    t.float "soil_temperature"
+    t.float "soil_moisture"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "garden_id"
+    t.index ["garden_id"], name: "index_env_measurements_on_garden_id"
+  end
 
   create_table "gardens", force: :cascade do |t|
     t.string "name"
