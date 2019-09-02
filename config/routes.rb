@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 			namespace :gardens do
 				get '/:id/env_measurements', to: 'env_measurements#index'
 			end
+      resources :gardens, only: :show
     end
   end	
 end
