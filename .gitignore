@@ -7,11 +7,16 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore all logfiles and tempfiles.
+# Ignore simplecov.
+coverage/
+
+# Ignore all swapfiles, logfiles and tempfiles.
 /log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+*.swp
+*.swo
 
 # Ignore uploaded files in development
 /storage/*
@@ -21,3 +26,4 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
