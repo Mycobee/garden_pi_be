@@ -23,9 +23,11 @@ describe "env_measurements api", type: :request do
 	end
 
 	it "returns 404 for a garden not in the DB" do
-		expect{
-			get "/api/v1/gardens/#{@garden.id + 1}/env_measurements"
-		}.to raise_error(ActionController::RoutingError)
+		get "/api/v1/gardens/#{@garden.id + 1}/env_measurements"
+
+    expect(response.status).to eq(404)
+    error = JSON.parse(response.body, symbolize_names: true)[:error]
+    expect(error).to eq("Garden Not Found")
 	end
 end
 
