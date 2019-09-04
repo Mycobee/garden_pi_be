@@ -11,7 +11,8 @@ close #
 *
 
 ## Current Test Suite:
-### Test Coverage Percentage: x%
+### Overall Test Coverage: x%
+### Model Test Coverage: x%
 - [ ] Tested my new feature(s) as well as any feasible edge cases (if possible)
 - [ ] Checked coverage/index.html - did not add any new code that's not covered by testing (if possible)
 - [ ] Ran the test suite - all tests are passing
