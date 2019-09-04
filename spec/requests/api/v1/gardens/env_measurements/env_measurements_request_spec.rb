@@ -43,4 +43,17 @@ describe "env_measurements api", type: :request do
     expect(result[:data][:attributes].count).to eq(3)
     expect(result[:data][:attributes].keys).to eq([:soil_temperature, :soil_moisture, :created_at])
 	end
+
+	it "doesn't create an env_measurement if param values wrong type" do
+		post "/api/v1/gardens/#{@garden.id}/env_measurements", params: {
+      "soil_temperature": "fiftyfive",
+      "soil_moisture": "eighty"
+    }
+
+		expect(response.status).to eq(400)
+
+    result = JSON.parse(response.body)
+
+    expect(result).to eq("{ Environment measurements failed to record. }")
+	end
 end
