@@ -3,16 +3,16 @@ require 'rails_helper'
 describe "env_measurements api", type: :request do
 	before :each do
 		@garden = create(:garden)
-		@em_1 = create(:env_measurement, garden: @garden)	
-		@em_2 = create(:env_measurement, garden: @garden)	
-		@em_3 = create(:env_measurement, garden: @garden)	
-		@em_4 = create(:env_measurement, garden: @garden)	
-		@em_5 = create(:env_measurement, garden: @garden)	
-		@em_6 = create(:env_measurement, garden: @garden)	
-		@em_7 = create(:env_measurement, garden: @garden)	
-		@em_8 = create(:env_measurement, garden: @garden)	
+		@em_1 = create(:env_measurement, garden: @garden)
+		@em_2 = create(:env_measurement, garden: @garden)
+		@em_3 = create(:env_measurement, garden: @garden)
+		@em_4 = create(:env_measurement, garden: @garden)
+		@em_5 = create(:env_measurement, garden: @garden)
+		@em_6 = create(:env_measurement, garden: @garden)
+		@em_7 = create(:env_measurement, garden: @garden)
+		@em_8 = create(:env_measurement, garden: @garden)
 	end
-	
+
 	it "Sends a garden's associated env_measurements" do
 		get "/api/v1/gardens/#{@garden.id}/env_measurements"
 
@@ -29,5 +29,18 @@ describe "env_measurements api", type: :request do
     error = JSON.parse(response.body, symbolize_names: true)[:error]
     expect(error).to eq("Garden Not Found")
 	end
-end
 
+	it "creates an env_measurement" do
+		post "/api/v1/gardens/#{@garden.id}/env_measurements", params: {
+      "soil_temperature": 55.52,
+      "soil_moisture": 85.33
+    }
+
+    expect(response).to be_successful
+
+    result = JSON.parse(response.body, symbolize_names: true)
+
+    expect(result[:data][:attributes].count).to eq(3)
+    expect(result[:data][:attributes].keys).to eq([:soil_temperature, :soil_moisture, :created_at])
+	end
+end
