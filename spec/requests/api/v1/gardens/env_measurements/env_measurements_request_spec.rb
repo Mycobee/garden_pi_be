@@ -52,8 +52,6 @@ describe "env_measurements api", type: :request do
 
 		expect(response.status).to eq(400)
 
-    result = JSON.parse(response.body)
-
-    expect(result).to eq("{ Environment measurements failed to record. }")
+    expect(response.body).to eq("{ Environment measurements failed to record. }")
 	end
 end
