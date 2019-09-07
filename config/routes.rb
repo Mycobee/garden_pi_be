@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     namespace :v1 do
 			namespace :gardens do
 				get '/:id/env_measurements', to: 'env_measurements#index'
-				post '/:id/env_measurements', to: 'env_measurements#create'
+        post '/:id/env_measurements', to: 'env_measurements#create'
+        get '/:id/jobs', to: 'jobs#index'
+        post '/:id/jobs', to: 'jobs#create'
 			end
       resources :gardens, only: :show
     end
