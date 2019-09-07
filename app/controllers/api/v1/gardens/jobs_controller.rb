@@ -1,9 +1,9 @@
 class Api::V1::Gardens::JobsController < ApplicationController
   before_action :set_garden, only: [:index, :create]
 
-	def index
+  def index
     render json: JobSerializer.new(@garden.jobs)
-	end
+  end
 
   def create
     job = Job.new(job_params)
