@@ -2,7 +2,13 @@ class Api::V1::Gardens::JobsController < ApplicationController
   before_action :set_garden, only: [:index, :create]
 
   def index
-    render json: JobSerializer.new(@garden.jobs)
+    if job_params[:seconds_ago] == nil
+      render json: JobSerializer.new(@garden.jobs)
+    elsif job_params[:seconds_ago].to_i > 0
+      render json: JobSerializer.new(@garden.jobs.where('created_at >= ?', Time.now - job_params[:seconds_ago].to_i))
+    else
+      render json: "{ Job request failed. }", status: :bad_request
+    end
   end
 
   def create
@@ -18,11 +24,11 @@ class Api::V1::Gardens::JobsController < ApplicationController
   private
 
   def job_params
-    params.permit(:name)
+    params.permit(:name, :seconds_ago)
   end
 
   def set_garden
     @garden = Garden.find_by(id: params[:id])
     not_found if @garden.nil?
-  end 
+  end
 end
