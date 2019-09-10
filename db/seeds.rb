@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-garden = Garden.create!(name: "Backyard Raised Bed", latitude: 42.3601, longitude: -71.0589)
+garden = Garden.create!(name: "Backyard Raised Bed", latitude: 42.3601, longitude: -71.0589, max_moisture: 40, min_moisture: 20, auto_water: true)
 
 now = Time.now.to_i
 forty_days_ago = now - 3456900
