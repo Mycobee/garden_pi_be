@@ -54,4 +54,15 @@ describe "env_measurements api", type: :request do
 
     expect(response.body).to eq("{ Environment measurements failed to record. }")
 	end
+
+	it "auto waters garden if soil_moisture less than garden min_moisture" do
+		post "/api/v1/gardens/#{@garden.id}/env_measurements", params: {
+      "soil_temperature": 69.25,
+      "soil_moisture": 19
+    }
+
+		expect(response.status).to eq(201)
+
+    expect(@garden.jobs[0].name).to eq("auto_water")
+	end
 end
