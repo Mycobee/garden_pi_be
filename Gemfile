@@ -38,6 +38,7 @@ group :development, :test do
   gem 'pry'
 	gem 'factory_bot_rails'
 	gem 'simplecov'
+  gem 'table_print'
 end
 
 group :development do

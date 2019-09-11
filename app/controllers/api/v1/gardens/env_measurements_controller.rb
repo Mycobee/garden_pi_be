@@ -2,7 +2,7 @@ class Api::V1::Gardens::EnvMeasurementsController < ApplicationController
   before_action :set_garden, only: [:index, :create]
 
 	def index
-    render json: EnvMeasurementSerializer.new(@garden.env_measurements)
+    render json: EnvMeasurementSerializer.new(@garden.env_measurements), status: :ok
 	end
 
   def create
