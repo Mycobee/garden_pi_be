@@ -10,6 +10,7 @@ class Garden < ApplicationRecord
 			Time.now.beginning_of_day - (days.to_i * 86400),
 			Time.now.beginning_of_day)
 		.group("DATE_TRUNC('day', created_at)")
+		.order(1)
 		.average(:soil_moisture)
 	end
 
