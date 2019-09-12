@@ -17,7 +17,7 @@ The following learning goals were achieved by our team during this project:
 + Focus on communication between front-end and back-end teams in order to complete and deploy features that had been outlined by the project spec.
 + Ultimately, demonstrate knowledge we gained throughout Turing.
 
-### Configuration
+## Configuration
 
 It's not necessary to install and run the program on your local machine, as it is deployed to Heroku and the endpoints outlined below can be accessed without running the application locally, however, if you're interested in working on the code base the following instructions will help you get started:
 
@@ -29,13 +29,13 @@ It's not necessary to install and run the program on your local machine, as it i
 
 1. You're ready to go! Please reach out if you have any other questions or concerns.
 
-<!-- Request Endpoints
+## Request Endpoints
 + [Gardens Show](#gardens_show)
 + [Environment Measurements](#env_measurements)
 + [Jobs](#jobs)
 + [Daily Average Moisture](#daily_avg_moisture)
 
-# <a name="gardens_show"></a>Gardens Show
+## <a name="gardens_show"></a>Gardens Show
 `https://garden-pi-be.herokuapp.com/api/v1/gardens/:id`
 
 The gardens show endpoint receives a GET request along with a Garden ID as part of the URL path. If the garden with the ID provided exists, then its name, latitude, and longitude will be returned. If the garden with the ID doesn't exist, a 404 status will be returned along with the message "Garden Not Found."
@@ -65,29 +65,72 @@ body:
 }
 ```
 
-# <a name="login"></a>User Sessions Login
-`https://the-express-sweater-weather.herokuapp.com/api/v1/sessions`
+<!-- # <a name="env_measurements"></a>Environment Measurements
+`https://garden-pi-be.herokuapp.com/api/v1/gardens/1/env_measurements`
 
-The sessions endpoint receives a POST request along with a body containing an `email` address and `password`. If the email address and password credentials are correct for a registered user, then the user's API key is returned.
+The Environment Measurements endpoint receives a GET request and returns a JSON formatted object which contains the environment measurements associated with the given garden. If a garden does not exist for the ID provided, then a 404 error with the object {"error": "Garden Not Found"} is returned.
 
 An example of a successful request:
 ```
-POST https://the-express-sweater-weather.herokuapp.com/api/v1/sessions
+GET https://garden-pi-be.herokuapp.com/api/v1/gardens/4/env_measurements
 Content-Type: application/json
 Accept: application/json
-
-{
-  "email": "example@email.com",
-  "password": "password"
-}
 ```
+
 An example of a successful response:
 ```
-status: 200
+status: 200 OK
 body:
 
 {
-  "apiKey": "2dcf26f1-71af-4071-9060-24d49b6c86e4",
+  "data":
+  [
+    {
+      "id": "1",
+      "type": "env_measurement",
+      "attributes": {
+          "soil_temperature": 79.0,
+          "soil_moisture": 15.0,
+          "created_at": "2019-09-09T21:17:28.396Z"
+      }
+    },
+    {
+      "id": "2",
+      "type": "env_measurement",
+      "attributes": {
+          "soil_temperature": 72.0,
+          "soil_moisture": 32.0,
+          "created_at": "2019-09-09T21:02:28.424Z"
+      }
+    },
+    {
+      "id": "3",
+      "type": "env_measurement",
+      "attributes": {
+          "soil_temperature": 62.0,
+          "soil_moisture": 10.0,
+          "created_at": "2019-09-09T20:47:28.431Z"
+      }
+    },
+    {
+      "id": "4",
+      "type": "env_measurement",
+      "attributes": {
+          "soil_temperature": 79.0,
+          "soil_moisture": 5.0,
+          "created_at": "2019-09-09T20:32:28.438Z"
+      }
+    },
+    {
+      "id": "5",
+      "type": "env_measurement",
+      "attributes": {
+          "soil_temperature": 87.0,
+          "soil_moisture": 65.0,
+          "created_at": "2019-09-09T20:17:28.444Z"
+      }
+    }
+  ]
 }
 ```
 # <a name="forecast"></a>Forecast
