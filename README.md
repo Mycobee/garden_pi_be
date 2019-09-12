@@ -1,10 +1,24 @@
-# GARDEN PI
+# GARDEN PI - BACK END
 
-GardenPi is an app you can use to monitor and water your plants from anywhere. It was created by Billy Uruttia, Brian Plantico, Colby Allen, David Engel, and Rob Stringer while Module 4 students at the Turing School of Software and Design in Denver, Colorado.
+GardenPi is an app you can use to monitor and water your plants from anywhere. It uses a Raspberry Pi It was created by Billy Urrutia, Brian Plantico, Colby Allen, David Engel, and Rob Stringer while Module 4 students at the Turing School of Software and Design in Denver, Colorado.
+
+GitHub Repository for the Back End: https://github.com/Mycobee/garden_pi_be
+GitHub Repository for the Front End:
+GitHub Repository for the Raspberry Pi:
+
++ Billy Urrutia: https://github.com/CosmicSpagetti
++ Brian Plantico: https://github.com/bplantico
++ Colby Allen: https://github.com/colbyallen012
++ David Engel: https://github.com/David5280
++ Rob Stringer: https://github.com/Mycobee
 
 ### About
-GardenPi is built using several popular technologies, and divides responsibilities between the front end interface and back end functionality. The back end was written in Ruby (version 2.6.3) and uses the Ruby on Rails framework (version 5.2.3) along with a PostgreSQL database (version 11.5). TravisCI was used as a continuous integration tool throughout the project, along with Git/GitHub for version control and code review by team members. Additionally, the codebase for the back end application is deployed to Heroku at both https://garden-pi-be.herokuapp.com and https://garden-pi-backend.herokuapp.com
+GardenPi is built using several popular technologies, and divides responsibilities between the front end interface and back end functionality. The back end was written in Ruby (version 2.6.3) and uses the Ruby on Rails framework (version 5.2.3) along with a PostgreSQL database (version 11.5). TravisCI was used as a continuous integration tool throughout the project, along with Git/GitHub for version control and code review by team members. The Raspberry Pi utilizes scripts written in Python3 along with cron jobs used to automate sending requests to the API endpoints made available by the Rails app. Additionally, the codebase for the back end application is deployed to Heroku at both
+https://garden-pi-be.herokuapp.com and
+https://garden-pi-backend.herokuapp.com
 
+### Schema
+![GardenPi Schema](https://user-images.githubusercontent.com/43261385/64760057-4a17e980-d528-11e9-8db5-736129b91ae9.png)
 
 ### Learning Goals
 The following learning goals were achieved by our team during this project:
