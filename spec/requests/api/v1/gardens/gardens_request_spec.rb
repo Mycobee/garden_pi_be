@@ -18,7 +18,7 @@ describe "gardens api", type: :request do
 	end
 
 	it "returns 404 for a garden not in the DB" do
-		get "/api/v1/gardens/#{@garden.id + 1}/env_measurements"
+		get "/api/v1/gardens/#{@garden.id + 1}"
 
     expect(response.status).to eq(404)
     error = JSON.parse(response.body, symbolize_names: true)[:error]
