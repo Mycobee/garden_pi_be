@@ -19,50 +19,52 @@ The following learning goals were achieved by our team during this project:
 
 ### Configuration
 
-It's not necessary to install and run the program on your local machine, as the application is deployed to Heroku and the endpoints outlined below can be accessed without running the application locally. However, if you're interested in working on the code base the following instructions will help you get started:
+It's not necessary to install and run the program on your local machine, as it is deployed to Heroku and the endpoints outlined below can be accessed without running the application locally, however, if you're interested in working on the code base the following instructions will help you get started:
 
-Fork and/or clone this repository to your local machine.
+1. Fork and/or clone this repository to your local machine.
 
-cd into the garden_pi_be directory and run `bundle install` from your command line.
+1. cd into the garden_pi_be directory and run `bundle install` from your command line.
 
-To set up the database, run `bundle exec rake db:create` and `bundle exec rake db:migrate`
+1. To set up the database, run `bundle exec rake db:create` and `bundle exec rake db:migrate`
 
-You're ready to go! Please reach out if you have any other questions or concerns.
+1. You're ready to go! Please reach out if you have any other questions or concerns.
 
-<!-- Endpoints
-+ [Create User Account](#create_user)
-+ [User Sessions Login](#login)
-+ [Forecast](#forecast)
-+ [Favorite a Location](#favorite_a_location)
-+ [List Favorite Locations](#list_favorites)
-+ [Delete a Favorite Location](#delete_favorite)
+<!-- Request Endpoints
++ [Gardens Show](#gardens_show)
++ [Environment Measurements](#env_measurements)
++ [Jobs](#jobs)
++ [Daily Average Moisture](#daily_avg_moisture)
 
-# <a name="create_user"></a>Create User Account
-`https://the-express-sweater-weather.herokuapp.com/api/v1/users`
+# <a name="gardens_show"></a>Gardens Show
+`https://garden-pi-be.herokuapp.com/api/v1/gardens/:id`
 
-The users endpoint receives a POST request along with a body containing an `email` address, `password`, and `passwordConfirmation` . If the email address has not already been used to create an account, and the password and passwordConfirmation match, then a unique API key is returned.
+The gardens show endpoint receives a GET request along with a Garden ID as part of the URL path. If the garden with the ID provided exists, then its name, latitude, and longitude will be returned. If the garden with the ID doesn't exist, a 404 status will be returned along with the message "Garden Not Found."
 
 An example of a successful request:
 ```
-POST https://the-express-sweater-weather.herokuapp.com/api/v1/users
+GET https://garden-pi-be.herokuapp.com/api/v1/gardens/1
 Content-Type: application/json
 Accept: application/json
-
-{
-  "email": "example@email.com",
-  "password": "password"
-  "passwordConfirmation": "password"
-}
 ```
 Successful response:
 ```
-status: 201
+status: 200 OK
 body:
 
 {
-  "apiKey": "2dcf26f1-71af-4071-9060-24d49b6c86e4",
+    "data": {
+        "id": "1",
+        "type": "garden",
+        "attributes": {
+            "id": 1,
+            "name": "Backyard Raised Bed",
+            "latitude": 42.3601,
+            "longitude": -71.0589
+        }
+    }
 }
 ```
+
 # <a name="login"></a>User Sessions Login
 `https://the-express-sweater-weather.herokuapp.com/api/v1/sessions`
 
