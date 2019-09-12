@@ -29,7 +29,7 @@ To set up the database, run `bundle exec rake db:create` and `bundle exec rake d
 
 You're ready to go! Please reach out if you have any other questions or concerns.
 
-Endpoints
+<!-- Endpoints
 + [Create User Account](#create_user)
 + [User Sessions Login](#login)
 + [Forecast](#forecast)
@@ -254,4 +254,4 @@ body:
 # <a name="list_favorites"></a>List Favorite Locations
 Endpoint coming soon.
 # <a name="delete_favorite"></a>Delete a Favorite Location
-Endpoint coming soon.
+Endpoint coming soon. -->
