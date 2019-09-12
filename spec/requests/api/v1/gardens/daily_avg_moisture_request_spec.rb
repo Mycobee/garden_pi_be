@@ -69,6 +69,6 @@ describe "gardens api", type: :request do
 
 		expect(response).to have_http_status(200)
 		data = JSON.parse(response.body, symbolize_names: true)[:data]
-    expect(data[:attributes].count).to eq(3)
+    expect(data[:attributes].count).to eq(8)
 	end
 end
