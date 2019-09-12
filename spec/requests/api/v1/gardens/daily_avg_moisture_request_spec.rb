@@ -65,7 +65,7 @@ describe "gardens api", type: :request do
 	end
 
 	it "Shows an individual garden" do
-		get "/api/v1/gardens/#{@garden.id}/daily_avg_moisture?days=3"
+		get "/api/v1/gardens/#{@garden.id}/daily_avg_moisture?days=8"
 
 		expect(response).to have_http_status(200)
 		data = JSON.parse(response.body, symbolize_names: true)[:data]

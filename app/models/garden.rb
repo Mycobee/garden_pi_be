@@ -6,11 +6,12 @@ class Garden < ApplicationRecord
 	has_many :jobs
 
 	def daily_avg_moisture(days)
+		require "pry"; binding.pry
 		env_measurements.where("created_at >= ? AND created_at <= ?",
 			Time.now.beginning_of_day - (days.to_i * 86400),
 			Time.now.beginning_of_day)
 		.group("DATE_TRUNC('day', created_at)")
-		.order(1)
+		.order("date_trunc_day_created_at"
 		.average(:soil_moisture)
 	end
 
