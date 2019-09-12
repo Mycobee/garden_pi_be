@@ -44,12 +44,12 @@ It's not necessary to install and run the program on your local machine, as it i
 1. You're ready to go! Please reach out if you have any other questions or concerns.
 
 ### Request Endpoints
-+ [Gardens Show](#gardens_show)
++ [Gardens](#gardens)
 + [Environment Measurements](#env_measurements)
 + [Jobs](#jobs)
 + [Daily Average Moisture](#daily_avg_moisture)
 
-### <a name="gardens_show"></a>Garden Show Request
+### <a name="gardens"></a>Gardens Request
 `https://garden-pi-be.herokuapp.com/api/v1/gardens/:id`
 
 HTTP verbs accepted: `GET`
