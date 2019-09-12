@@ -72,7 +72,7 @@ The Environment Measurements endpoint receives a GET request and returns a JSON 
 
 An example of a successful request:
 ```
-GET https://garden-pi-be.herokuapp.com/api/v1/gardens/4/env_measurements
+GET https://garden-pi-be.herokuapp.com/api/v1/gardens/1/env_measurements
 Content-Type: application/json
 Accept: application/json
 ```
