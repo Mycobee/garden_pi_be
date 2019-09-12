@@ -2,9 +2,9 @@
 
 GardenPi is an app you can use to monitor and water your plants from anywhere. It uses a Raspberry Pi It was created by Billy Urrutia, Brian Plantico, Colby Allen, David Engel, and Rob Stringer while Module 4 students at the Turing School of Software and Design in Denver, Colorado.
 
-GitHub Repository for the Back End: https://github.com/Mycobee/garden_pi_be
-GitHub Repository for the Front End:
-GitHub Repository for the Raspberry Pi:
+GitHub Repository for the Back End: https://github.com/Mycobee/garden_pi_be    
+GitHub Repository for the Front End: https://github.com/Mycobee/garden_pi_fe    
+GitHub Repository for the Raspberry Pi: https://github.com/Mycobee/garden_python   
 
 + Billy Urrutia: https://github.com/CosmicSpagetti
 + Brian Plantico: https://github.com/bplantico
@@ -287,7 +287,7 @@ An example of a successful GET response with a `seconds_ago` parameter (if one j
 }
 ```
 ### <a name="daily_avg_moisture"></a>Daily Average Moisture Request
-`https://garden-pi-be.herokuapp.com/api/v1/gardens/:id/daily_avg_moisture
+`https://garden-pi-be.herokuapp.com/api/v1/gardens/:id/daily_avg_moisture`
 
 HTTP verbs accepted: `GET`
 
