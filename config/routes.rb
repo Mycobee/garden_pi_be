@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
 				get '/:id/daily_avg_moisture', to: 'daily_avg_moisture#index'
 			end
+			resources :users, only: :create
       resources :gardens, only: :show
     end
   end

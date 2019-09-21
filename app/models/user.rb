@@ -7,11 +7,12 @@ class User < ApplicationRecord
   validates_presence_of :last_name
   validates :email, presence: true, uniqueness: true
   validates_presence_of :password
-  validates :api_key, presence: true, uniqueness: true
+  validates :api_key, uniqueness: true
 
   private
 
   def set_api_key
     self.api_key = SecureRandom.urlsafe_base64.to_s
   end
+
 end
