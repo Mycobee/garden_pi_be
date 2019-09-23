@@ -48,6 +48,7 @@ It's not necessary to install and run the program on your local machine, as it i
 + [Environment Measurements](#env_measurements)
 + [Jobs](#jobs)
 + [Daily Average Moisture](#daily_avg_moisture)
++ [Users](#users)
 
 ### <a name="gardens"></a>Gardens Request
 `https://garden-pi-be.herokuapp.com/api/v1/gardens/:id`
@@ -316,5 +317,36 @@ body:
       "2019-09-11 00:00:00 +0000": "90.95"
     }
   }
+}
+```
+
+### <a name="users"></a>Users Request
+`https://garden-pi-be.herokuapp.com/api/v1/users`
+
+HTTP verbs accepted: `POST`
+
+The users endpoint receives a POST request along with a body containing a first name, last name, email address, password, and password confirmation. If the email address has not already been used to create a user, and the password matches the password confirmation, then a user is created and a unique API key is returned. If the email address is already in use, the passwords match, and the user can be authenticated, the users api_key will be returned. If the email address is already in use but the password and password confirmation don't match, then an error message telling the user to check that the passwords match will be returned.
+
+An example of a successful POST request:
+```
+POST https://garden-pi-be.herokuapp.com/api/v1/users
+Content-Type: application/json
+Accept: application/json
+
+Body (x-www-form-urlenconded form data, form data, or JSON formatted):
+{
+"first_name": "Johnny"
+"last_name": "Appleseed"
+"email": "SeedDropper@gardener.com"
+"password": "password"
+"password_confirmation": "password"
+}
+```
+An example of a successful response to a POST request:
+```
+status: 201
+body:
+{
+    "api_key": "sqzGq5PWZFqSR4jrjzho-w"
 }
 ```
