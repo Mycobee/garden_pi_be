@@ -18,7 +18,7 @@ https://garden-pi-be.herokuapp.com and
 https://garden-pi-backend.herokuapp.com
 
 ### Schema
-![GardenPi Schema](https://user-images.githubusercontent.com/43261385/64760057-4a17e980-d528-11e9-8db5-736129b91ae9.png)
+![GardenPi Schema](https://user-images.githubusercontent.com/43261385/65452783-69205080-de31-11e9-8f4a-c1a260cec5f5.png)
 
 ### Learning Goals
 The following learning goals were achieved by our team during this project:
