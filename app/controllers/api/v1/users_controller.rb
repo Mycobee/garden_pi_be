@@ -7,12 +7,12 @@ class Api::V1::UsersController < ApplicationController
       if user.save
         render json: UserSerializer.new(user), status: :created
       else
-        render json: "{ Something went wrong. Please try again. }", status: :bad_request
+        render json: "{ Something went wrong. Please try again. }".to_json, status: :bad_request
       end
-    elsif user && user.authenticate(params[:password])
+    elsif user && passwords_match && user.authenticate(params[:password])
       render json: UserSerializer.new(user), status: :ok
     else
-      render json: "{ Please check that passwords match. }", status: :bad_request
+      render json: "{ Please check that passwords match. }".to_json, status: :bad_request
     end
   end
 
