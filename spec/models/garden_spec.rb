@@ -4,6 +4,7 @@ RSpec.describe Garden, type: :model do
 	describe "relationships" do
 		it { should have_many :env_measurements }
 		it { should have_many :jobs }
+		it { should belong_to :user }
 	end
 
 	describe "#daily_avg" do

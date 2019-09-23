@@ -4,6 +4,7 @@ class Garden < ApplicationRecord
 	# relationships
 	has_many :env_measurements
 	has_many :jobs
+	belongs_to :user
 
 	def daily_avg_moisture(days)
 		env_measurements.where("created_at >= ? AND created_at <= ?",

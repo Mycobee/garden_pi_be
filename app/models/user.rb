@@ -9,6 +9,9 @@ class User < ApplicationRecord
   validates_presence_of :password
   validates :api_key, uniqueness: true
 
+  # relationships
+  has_many :gardens
+
   private
 
   def set_api_key
