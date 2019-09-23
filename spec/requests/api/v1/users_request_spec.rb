@@ -27,8 +27,7 @@ describe 'Users API', type: :request do
       "first_name": "first",
       "last_name": "last",
       "email": "user1@example.com",
-      "password": "password",
-      "password_confirmation": "password"
+      "password": "password"
       }
 
     expect(response).to be_successful
@@ -37,23 +36,6 @@ describe 'Users API', type: :request do
 
     expect(result.values.first.class).to eq(String)
     expect(result.keys).to eq(["api_key"])
-  end
-
-  it "doesn't create user if passwords don't match" do
-    user = User.create!( first_name: "first", last_name: "last", email: "user1@example.com", password: "password", password_confirmation: "password")
-
-    post "/api/v1/users", params: {
-      "first_name": "first",
-      "last_name": "last",
-      "email": "user1@example.com",
-      "password": "password",
-      "password_confirmation": "wrong"
-      }
-
-    expect(status).to eq(400)
-
-    result = JSON.parse(response.body)
-    expect(result).to eq("{ Please check that passwords match. }")
   end
 
   it "doesn't create user if missing name" do
@@ -69,6 +51,6 @@ describe 'Users API', type: :request do
     expect(status).to eq(400)
 
     result = JSON.parse(response.body)
-    expect(result).to eq("{ Something went wrong. Please try again. }")
+    expect(result).to eq("{ Something went wrong. Please ensure matching passwords, valid email, first name, and last name, then try again. }")
   end
 end
