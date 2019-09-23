@@ -17,8 +17,20 @@ GardenPi is built using several popular technologies, and divides responsibiliti
 https://garden-pi-be.herokuapp.com and
 https://garden-pi-backend.herokuapp.com
 
+### Setup & Configuration
+
+It's not necessary to install and run the program on your local machine, as it is deployed to Heroku and the endpoints outlined below can be accessed without running the application locally, however, if you're interested in working on the code base the following instructions will help you get started:
+
+1. Fork and/or clone this repository to your local machine.
+
+1. cd into the garden_pi_be directory and run `bundle install` from your command line.
+
+1. To set up the database, run `bundle exec rake db:create` and `bundle exec rake db:migrate`
+
+1. You're ready to go! Please reach out if you have any other questions or concerns.
+
 ### Schema
-![GardenPi Schema](https://user-images.githubusercontent.com/43261385/65452783-69205080-de31-11e9-8f4a-c1a260cec5f5.png)
+![GardenPi Schema](https://user-images.githubusercontent.com/43261385/65453131-17c49100-de32-11e9-8a4a-dbe0b517b07a.png)
 
 ### Learning Goals
 The following learning goals were achieved by our team during this project:
@@ -30,18 +42,6 @@ The following learning goals were achieved by our team during this project:
 + Build applications that execute in development, test, CI, and production environments.
 + Focus on communication between front-end and back-end teams in order to complete and deploy features that had been outlined by the project spec.
 + Ultimately, demonstrate knowledge we gained throughout Turing.
-
-### Configuration
-
-It's not necessary to install and run the program on your local machine, as it is deployed to Heroku and the endpoints outlined below can be accessed without running the application locally, however, if you're interested in working on the code base the following instructions will help you get started:
-
-1. Fork and/or clone this repository to your local machine.
-
-1. cd into the garden_pi_be directory and run `bundle install` from your command line.
-
-1. To set up the database, run `bundle exec rake db:create` and `bundle exec rake db:migrate`
-
-1. You're ready to go! Please reach out if you have any other questions or concerns.
 
 ### Request Endpoints
 + [Gardens](#gardens)
