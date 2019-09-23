@@ -17,8 +17,20 @@ GardenPi is built using several popular technologies, and divides responsibiliti
 https://garden-pi-be.herokuapp.com and
 https://garden-pi-backend.herokuapp.com
 
+### Setup & Configuration
+
+It's not necessary to install and run the program on your local machine, as it is deployed to Heroku and the endpoints outlined below can be accessed without running the application locally, however, if you're interested in working on the code base the following instructions will help you get started:
+
+1. Fork and/or clone this repository to your local machine.
+
+1. cd into the garden_pi_be directory and run `bundle install` from your command line.
+
+1. To set up the database, run `bundle exec rake db:create` and `bundle exec rake db:migrate`
+
+1. You're ready to go! Please reach out if you have any other questions or concerns.
+
 ### Schema
-![GardenPi Schema](https://user-images.githubusercontent.com/43261385/64760057-4a17e980-d528-11e9-8db5-736129b91ae9.png)
+![GardenPi Schema](https://user-images.githubusercontent.com/43261385/65453131-17c49100-de32-11e9-8a4a-dbe0b517b07a.png)
 
 ### Learning Goals
 The following learning goals were achieved by our team during this project:
@@ -31,23 +43,12 @@ The following learning goals were achieved by our team during this project:
 + Focus on communication between front-end and back-end teams in order to complete and deploy features that had been outlined by the project spec.
 + Ultimately, demonstrate knowledge we gained throughout Turing.
 
-### Configuration
-
-It's not necessary to install and run the program on your local machine, as it is deployed to Heroku and the endpoints outlined below can be accessed without running the application locally, however, if you're interested in working on the code base the following instructions will help you get started:
-
-1. Fork and/or clone this repository to your local machine.
-
-1. cd into the garden_pi_be directory and run `bundle install` from your command line.
-
-1. To set up the database, run `bundle exec rake db:create` and `bundle exec rake db:migrate`
-
-1. You're ready to go! Please reach out if you have any other questions or concerns.
-
 ### Request Endpoints
 + [Gardens](#gardens)
 + [Environment Measurements](#env_measurements)
 + [Jobs](#jobs)
 + [Daily Average Moisture](#daily_avg_moisture)
++ [Users](#users)
 
 ### <a name="gardens"></a>Gardens Request
 `https://garden-pi-be.herokuapp.com/api/v1/gardens/:id`
@@ -316,5 +317,36 @@ body:
       "2019-09-11 00:00:00 +0000": "90.95"
     }
   }
+}
+```
+
+### <a name="users"></a>Users Request
+`https://garden-pi-be.herokuapp.com/api/v1/users`
+
+HTTP verbs accepted: `POST`
+
+The users endpoint receives a POST request along with a body containing a first name, last name, email address, password, and password confirmation. If the email address has not already been used to create a user, and the password matches the password confirmation, then a user is created and a unique API key is returned. If the email address is already in use, the passwords match, and the user can be authenticated, the users api_key will be returned. If the email address is already in use but the password and password confirmation don't match, then an error message telling the user to check that the passwords match will be returned.
+
+An example of a successful POST request:
+```
+POST https://garden-pi-be.herokuapp.com/api/v1/users
+Content-Type: application/json
+Accept: application/json
+
+Body (x-www-form-urlenconded form data, form data, or JSON formatted):
+{
+"first_name": "Johnny"
+"last_name": "Appleseed"
+"email": "SeedDropper@gardener.com"
+"password": "password"
+"password_confirmation": "password"
+}
+```
+An example of a successful response to a POST request:
+```
+status: 201
+body:
+{
+    "api_key": "sqzGq5PWZFqSR4jrjzho-w"
 }
 ```
