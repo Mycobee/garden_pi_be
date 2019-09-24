@@ -32,12 +32,14 @@ describe "gardens api", type: :request do
     headers = { "Authorization": @user.api_key } 
 
     post "/api/v1/gardens", params: {
-      "name": "Backyard Raised Bed",
-      "latitude": 39.742043,
-      "longitude": -104.991531,
-      "max_moisture": 82.5,
-      "min_moisture": 22.5,
-      "auto_water": "false"
+      "garden": {
+        "name": "Backyard Raised Bed",
+        "latitude": 39.742043,
+        "longitude": -104.991531,
+        "max_moisture": 82.5,
+        "min_moisture": 22.5,
+        "auto_water": "false"
+        }
       },
       headers: headers
 
