@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 			post '/sessions', to: 'sessions#create'
   		delete '/sessions', to: 'sessions#destroy'
 			resources :users, only: :create
-      resources :gardens, only: :show
+      resources :gardens, only: [:show, :create]
     end
   end
 end
