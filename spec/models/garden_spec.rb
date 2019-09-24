@@ -9,6 +9,7 @@ RSpec.describe Garden, type: :model do
     it { should validate_numericality_of :longitude  }
     it { should validate_numericality_of :max_moisture  }
     it { should validate_numericality_of :min_moisture  }
+    Garden.new(auto_water: true).should validate_presence_of(:min_moisture)
   end
 
 	describe "relationships" do
