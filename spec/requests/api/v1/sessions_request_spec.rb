@@ -31,4 +31,17 @@ RSpec.describe "Sessions API" do
     expect(result).to eq("{ Please check that the email and password you've entered are correct. }")
   end
 
+  it "doesn't create a User session if api key is inactive" do
+    @user.update(api_key_active: false)
+
+    post "/api/v1/sessions", params: {
+      "email": @user.email,
+      "password": @user.password
+      }
+
+    expect(response.status).to eq(400)
+
+    result = JSON.parse(response.body)
+    expect(result).to eq("{ Your api key is not active. }")
+  end
 end
