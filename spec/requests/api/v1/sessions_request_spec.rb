@@ -44,4 +44,18 @@ RSpec.describe "Sessions API" do
     result = JSON.parse(response.body)
     expect(result).to eq("{ Your api key is not active. }")
   end
+
+  it "clears a User session (logout)" do
+    post "/api/v1/sessions", params: {
+      "email": @user.email,
+      "password": @user.password
+      }
+
+    expect(session[:user_id]).to eq(@user.id)
+
+    delete "/api/v1/sessions"
+
+    expect(response.status).to eq(204)
+    expect(session[:user_id]).to eq(nil)
+  end
 end

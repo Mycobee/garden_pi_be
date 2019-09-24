@@ -13,4 +13,8 @@ class Api::V1::SessionsController < ApplicationController
       render json: "{ Please check that the email and password you've entered are correct. }".to_json, status: :unauthorized
     end
   end
+
+  def destroy
+    session.clear
+  end
 end
