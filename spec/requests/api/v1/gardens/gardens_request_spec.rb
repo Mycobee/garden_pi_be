@@ -55,4 +55,24 @@ describe "gardens api", type: :request do
     expect(garden_data[:attributes][:min_moisture].to_f).to eq(new_garden.min_moisture)
     expect(garden_data[:attributes][:auto_water]).to eq(new_garden.auto_water)
 	end
+
+	it "returns 401 for an unauthorized request" do
+    headers = { "Authorization": "8675309jenn3" } 
+
+    post "/api/v1/gardens", params: {
+      "garden": {
+        "name": "Backyard Raised Bed",
+        "latitude": 39.742043,
+        "longitude": -104.991531,
+        "max_moisture": 82.5,
+        "min_moisture": 22.5,
+        "auto_water": "false"
+        }
+      },
+      headers: headers
+
+    expect(response.status).to eq(401)
+    error = JSON.parse(response.body, symbolize_names: true)[:error]
+    expect(error).to eq("Invalid Credentials")
+	end
 end
