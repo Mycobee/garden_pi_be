@@ -1,6 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Garden, type: :model do
+  describe "validations" do
+    it { should validate_presence_of :name }
+    it { should validate_presence_of :latitude }
+    it { should validate_presence_of :longitude }
+    it { should validate_numericality_of :latitude }
+    it { should validate_numericality_of :longitude  }
+    it { should validate_numericality_of :max_moisture  }
+    it { should validate_numericality_of :min_moisture  }
+  end
+
 	describe "relationships" do
 		it { should have_many :env_measurements }
 		it { should have_many :jobs }
