@@ -18,4 +18,17 @@ RSpec.describe "Sessions API" do
     expect(result.keys).to eq(["api_key"])
   end
 
+  it "doesn't create a User session if invalid credentials" do
+    post "/api/v1/sessions", params: {
+      "email": @user.email,
+      "password": "wrong"
+      }
+
+    expect(response.status).to eq(401)
+
+    result = JSON.parse(response.body)
+
+    expect(result).to eq("{ Please check that the email and password you've entered are correct. }")
+  end
+
 end
