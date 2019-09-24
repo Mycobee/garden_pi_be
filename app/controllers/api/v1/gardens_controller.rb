@@ -7,8 +7,12 @@ class Api::V1::GardensController < ApplicationController
 	end	
 
   def create
-    garden = @user.gardens.create(garden_params) 
-    render json: GardenSerializer.new(garden), status: :created
+    garden = @user.gardens.new(garden_params) 
+    if garden.save
+      render json: GardenSerializer.new(garden), status: :created
+    else
+      bad_request
+    end
   end
 
   private
