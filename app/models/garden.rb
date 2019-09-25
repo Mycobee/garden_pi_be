@@ -2,6 +2,7 @@ class Garden < ApplicationRecord
 	# validations
   validates_presence_of :name, :latitude, :longitude
   validates_numericality_of :latitude, :longitude, :max_moisture, :min_moisture
+  validates :min_moisture, presence: true, if: :auto_water
 
 	# relationships
 	has_many :env_measurements
