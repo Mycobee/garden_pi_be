@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_23_164031) do
+ActiveRecord::Schema.define(version: 2019_09_24_195103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2019_09_23_164031) do
     t.datetime "updated_at", null: false
     t.float "max_moisture"
     t.float "min_moisture"
-    t.boolean "auto_water"
+    t.boolean "auto_water", default: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_gardens_on_user_id"
   end

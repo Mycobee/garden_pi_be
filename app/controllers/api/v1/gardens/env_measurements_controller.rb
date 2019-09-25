@@ -24,7 +24,7 @@ class Api::V1::Gardens::EnvMeasurementsController < ApplicationController
 
   def set_garden
     @garden = Garden.find_by(id: params[:id])
-    not_found if @garden.nil?
+    garden_not_found if @garden.nil?
   end
 
   def water_if_dry
