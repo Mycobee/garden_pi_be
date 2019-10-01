@@ -1,13 +1,13 @@
 class Api::V1::GardensController < ApplicationController
   before_action :set_garden, only: [:show]
-  before_action :authenticate_user, only: [:create]
+  before_action :authenticate_user, only: [:show, :create]
 
 	def show
-    render json: GardenSerializer.new(@garden)	
-	end	
+    render json: GardenSerializer.new(@garden)
+	end
 
   def create
-    garden = @user.gardens.new(garden_params) 
+    garden = @user.gardens.new(garden_params)
     if garden.save
       render json: GardenSerializer.new(garden), status: :created
     else
@@ -29,6 +29,6 @@ class Api::V1::GardensController < ApplicationController
 
   def set_garden
     @garden = Garden.find_by(id: params[:id])
-    garden_not_found if @garden.nil?  
+    garden_not_found if @garden.nil?
   end
 end

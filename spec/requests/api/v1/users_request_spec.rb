@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Users API', type: :request do
-  it "creates an account for a user and retruns an api_key" do
+  it "creates an account for a user and returns an api_key" do
 
     post "/api/v1/users", params: {
       "first_name": "first",
