@@ -1,9 +1,10 @@
 class Api::V1::UsersController < ApplicationController
 
   def create
-    user = User.find_by(email: user_params[:email])
+    user = User.find_by(email: user_params[:email].downcase)
     if user.nil?
       user = User.new(user_params)
+      user.update(email: user_params[:email].downcase)
       if user.save
         render json: UserSerializer.new(user), status: :created
       else

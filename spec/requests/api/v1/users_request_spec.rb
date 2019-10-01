@@ -38,6 +38,37 @@ describe 'Users API', type: :request do
     expect(result.keys).to eq(["api_key"])
   end
 
+  it "returns api_key regardless of email case" do
+    user = User.create!( first_name: "first", last_name: "last", email: "user1@example.com", password: "password", password_confirmation: "password")
+
+    post "/api/v1/users", params: {
+      "first_name": "first",
+      "last_name": "last",
+      "email": "USER1@example.com",
+      "password": "password"
+      }
+
+    expect(response).to be_successful
+
+    result = JSON.parse(response.body)
+
+    expect(result.values.first.class).to eq(String)
+    expect(result.keys).to eq(["api_key"])
+    expect(User.last).to eq(user)
+  end
+
+  it "saves user email as downcased string" do
+
+    post "/api/v1/users", params: {
+      "first_name": "first",
+      "last_name": "last",
+      "email": "USER1@example.com",
+      "password": "password"
+      }
+
+    expect(User.last.email).to eq(request.params[:email].downcase)
+  end
+
   it "doesn't create user if missing name" do
 
     post "/api/v1/users", params: {
