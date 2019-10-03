@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 				get '/:id/env_measurements', to: 'env_measurements#index'
         post '/:id/env_measurements', to: 'env_measurements#create'
 
+				get '/:id/photos', to: 'photos#index'
+				post '/:id/photos', to: 'photos#create'
+
         get '/:id/jobs', to: 'jobs#index'
         post '/:id/jobs', to: 'jobs#create'
 
