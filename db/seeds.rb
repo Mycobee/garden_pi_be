@@ -16,7 +16,7 @@ x = 0
 until now == forty_days_ago
   garden.env_measurements.create!(soil_temperature: rand(20..100), soil_moisture: rand(0..100), created_at: x.minutes.ago)
   now = now - 900
-  x = x + 15
+  x = x - 15
 end
 
 garden.jobs.create!(name: "water", created_at: 105.minutes.ago)
