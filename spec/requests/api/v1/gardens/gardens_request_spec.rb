@@ -10,7 +10,10 @@ describe "gardens api", type: :request do
 
   # Garden Index Specs
   it "shows all of a user's gardens" do
-		get "/api/v1/gardens"
+    headers = { "Authorization": @user.api_key }
+
+		get "/api/v1/gardens", 
+		headers: headers
 
 		expect(response).to have_http_status(200)
 
