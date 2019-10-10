@@ -11,6 +11,9 @@ Rails.application.routes.draw do
           		get '/:id/jobs', to: 'jobs#index'
           		post '/:id/jobs', to: 'jobs#create'
 
+				      get '/:id/photos', to: 'photos#index'
+				      post '/:id/photos', to: 'photos#create'
+
 			  	get '/:id/daily_avg_moisture', to: 'daily_avg_moisture#index'
 			  end
 
