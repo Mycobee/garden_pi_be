@@ -4,8 +4,22 @@ describe "gardens api", type: :request do
 	before :each do
 		@garden = create(:garden)
     @user = create(:user) 
+    @user_garden_1 = create(:garden, user: @user) 
+    @user_garden_2 = create(:garden, user: @user) 
 	end
 
+  # Garden Index Specs
+  it "shows all of a user's gardens" do
+		get "/api/v1/gardens"
+
+		expect(response).to have_http_status(200)
+
+		garden_data = JSON.parse(response.body, symbolize_names: true)[:data]
+
+    expect(garden_data.first[:id].to_i).to eq(@user_garden_1.id)
+    expect(garden_data.last[:id].to_i).to eq(@user_garden_2.id)
+  end
+ 
   # Garden Show Specs
 	it "Shows an individual garden" do
 		get "/api/v1/gardens/#{@garden.id}"
