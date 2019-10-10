@@ -22,7 +22,9 @@ describe "gardens api", type: :request do
  
   # Garden Show Specs
 	it "Shows an individual garden" do
-		get "/api/v1/gardens/#{@garden.id}"
+		headers = { "Authorization": @user.api_key }
+		get "/api/v1/gardens/#{@garden.id}",
+		headers: headers
 
 		expect(response).to have_http_status(200)
 
@@ -43,7 +45,7 @@ describe "gardens api", type: :request do
 
   # Garden Create Specs
 	it "Creates a garden" do
-    headers = { "Authorization": @user.api_key } 
+    headers = { "Authorization": @user.api_key }
 
     post "/api/v1/gardens", params: {
       "garden": {
@@ -70,7 +72,7 @@ describe "gardens api", type: :request do
 	end
 
 	it "returns 401 for an unauthorized request" do
-    headers = { "Authorization": "8675309jenn3" } 
+    headers = { "Authorization": "8675309jenn3" }
 
     post "/api/v1/gardens", params: {
       "garden": {
@@ -90,7 +92,7 @@ describe "gardens api", type: :request do
 	end
 
   it "returns 400 for a bad request" do
-    headers = { "Authorization": @user.api_key } 
+    headers = { "Authorization": @user.api_key }
 
     post "/api/v1/gardens", params: {
       "garden": {
