@@ -3,23 +3,26 @@ Rails.application.routes.draw do
 	root 'welcome#index'
 
 	namespace :api do
-    namespace :v1 do
-			namespace :gardens do
-				get '/:id/env_measurements', to: 'env_measurements#index'
-        post '/:id/env_measurements', to: 'env_measurements#create'
+    	namespace :v1 do
+			  namespace :gardens do
+			  	get '/:id/env_measurements', to: 'env_measurements#index'
+          		post '/:id/env_measurements', to: 'env_measurements#create'
 
-				get '/:id/photos', to: 'photos#index'
-				post '/:id/photos', to: 'photos#create'
+          		get '/:id/jobs', to: 'jobs#index'
+          		post '/:id/jobs', to: 'jobs#create'
 
-        get '/:id/jobs', to: 'jobs#index'
-        post '/:id/jobs', to: 'jobs#create'
+				      get '/:id/photos', to: 'photos#index'
+				      post '/:id/photos', to: 'photos#create'
 
-				get '/:id/daily_avg_moisture', to: 'daily_avg_moisture#index'
-			end
-			post '/sessions', to: 'sessions#create'
-  		delete '/sessions', to: 'sessions#destroy'
-			resources :users, only: :create
-      resources :gardens, only: [:show, :create]
-    end
-  end
+			  	get '/:id/daily_avg_moisture', to: 'daily_avg_moisture#index'
+			  end
+
+			  resources :gardens, only: [:show, :index, :create]
+
+			  post '/sessions', to: 'sessions#create'
+			  delete '/sessions', to: 'sessions#destroy'
+			    
+			  resources :users, only: :create
+    	end
+  	end
 end

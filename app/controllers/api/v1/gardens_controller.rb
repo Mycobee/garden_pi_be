@@ -1,10 +1,14 @@
 class Api::V1::GardensController < ApplicationController
   before_action :set_garden, only: [:show]
-  before_action :authenticate_user, only: [:show, :create]
+  before_action :authenticate_user, only: [:show, :create, :index]
 
 	def show
     render json: GardenSerializer.new(@garden)
 	end
+
+  def index
+    render json: GardenSerializer.new(@user.gardens)
+  end
 
   def create
     garden = @user.gardens.new(garden_params)
