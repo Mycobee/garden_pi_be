@@ -16,49 +16,49 @@ describe "gardens api", type: :request do
     x = 0
 
     until today == one_day_ago
-      @garden.env_measurements.create!(soil_temperature: 10, soil_moisture: 10, created_at: x.minutes.ago)
+      @garden.env_measurements.create!(humidity: 10, temperature: 10, soil_moisture: 10, created_at: x.minutes.ago)
       today = today - 900
       x = x + 15
     end
 
     until one_day_ago == two_days_ago
-      @garden.env_measurements.create!(soil_temperature: 20, soil_moisture: 20, created_at: x.minutes.ago)
+      @garden.env_measurements.create!(humidity: 20, temperature: 20, soil_moisture: 20, created_at: x.minutes.ago)
       one_day_ago = one_day_ago - 900
       x = x + 15
     end
 
     until two_days_ago == three_days_ago
-      @garden.env_measurements.create!(soil_temperature: 30, soil_moisture: 30, created_at: x.minutes.ago)
+      @garden.env_measurements.create!(humidity: 30, temperature: 30, soil_moisture: 30, created_at: x.minutes.ago)
       two_days_ago = two_days_ago - 900
       x = x + 15
     end
 
     until three_days_ago == four_days_ago
-      @garden.env_measurements.create!(soil_temperature: 40, soil_moisture: 40, created_at: x.minutes.ago)
+      @garden.env_measurements.create!(humidity: 40, temperature: 40, soil_moisture: 40, created_at: x.minutes.ago)
       three_days_ago = three_days_ago - 900
       x = x + 15
     end
 
     until four_days_ago == five_days_ago
-      @garden.env_measurements.create!(soil_temperature: 50, soil_moisture: 50, created_at: x.minutes.ago)
+      @garden.env_measurements.create!(humidity: 50, temperature: 50, soil_moisture: 50, created_at: x.minutes.ago)
       four_days_ago = four_days_ago - 900
       x = x + 15
     end
 
     until five_days_ago == six_days_ago
-      @garden.env_measurements.create!(soil_temperature: 60, soil_moisture: 60, created_at: x.minutes.ago)
+      @garden.env_measurements.create!(humidity: 60, temperature: 60, soil_moisture: 60, created_at: x.minutes.ago)
       five_days_ago = five_days_ago - 900
       x = x + 15
     end
 
     until six_days_ago == seven_days_ago
-      @garden.env_measurements.create!(soil_temperature: 70, soil_moisture: 70, created_at: x.minutes.ago)
+      @garden.env_measurements.create!(humidity: 70, temperature: 70, soil_moisture: 70, created_at: x.minutes.ago)
       six_days_ago = six_days_ago - 900
       x = x + 15
     end
 
     until seven_days_ago == eight_days_ago
-      @garden.env_measurements.create!(soil_temperature: 80, soil_moisture: 80, created_at: x.minutes.ago)
+      @garden.env_measurements.create!(humidity: 80, temperature: 80, soil_moisture: 80, created_at: x.minutes.ago)
       seven_days_ago = seven_days_ago - 900
       x = x + 15
     end

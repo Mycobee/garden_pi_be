@@ -18,7 +18,8 @@ describe "env_measurements api", type: :request do
 
 		expect(response).to have_http_status(200)
 		garden_data = JSON.parse(response.body, symbolize_names: true)[:data]
-    expect(garden_data.first[:attributes][:soil_temperature]).to eq(@em_1.soil_temperature)
+    expect(garden_data.first[:attributes][:humidity]).to eq(@em_1.humidity)
+    expect(garden_data.first[:attributes][:temperature]).to eq(@em_1.temperature)
     expect(garden_data.last[:attributes][:soil_moisture]).to eq(@em_8.soil_moisture)
 	end
 
@@ -32,7 +33,8 @@ describe "env_measurements api", type: :request do
 
 	it "creates an env_measurement" do
 		post "/api/v1/gardens/#{@garden.id}/env_measurements", params: {
-      "soil_temperature": 55.52,
+      "humidity": 45.00,
+			"temperature": 55.52,
       "soil_moisture": 85.33
     }
 
@@ -40,13 +42,14 @@ describe "env_measurements api", type: :request do
 
     result = JSON.parse(response.body, symbolize_names: true)
 
-    expect(result[:data][:attributes].count).to eq(3)
-    expect(result[:data][:attributes].keys).to eq([:soil_temperature, :soil_moisture, :created_at])
+    expect(result[:data][:attributes].count).to eq(4)
+    expect(result[:data][:attributes].keys).to eq([:humidity, :temperature, :soil_moisture, :created_at])
 	end
 
 	it "doesn't create an env_measurement if param values wrong type" do
 		post "/api/v1/gardens/#{@garden.id}/env_measurements", params: {
-      "soil_temperature": "fiftyfive",
+      "humidity": "thirtyfive",
+      "temperature": "fiftyfive",
       "soil_moisture": "eighty"
     }
 
@@ -57,7 +60,8 @@ describe "env_measurements api", type: :request do
 
 	it "auto waters garden if soil_moisture less than garden min_moisture" do
 		post "/api/v1/gardens/#{@garden.id}/env_measurements", params: {
-      "soil_temperature": 69.25,
+      "humidity": 55,
+			"temperature": 69.25,
       "soil_moisture": 19
     }
 

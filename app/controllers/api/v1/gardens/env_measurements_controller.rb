@@ -19,7 +19,7 @@ class Api::V1::Gardens::EnvMeasurementsController < ApplicationController
   private
 
   def env_params
-    params.permit(:soil_temperature, :soil_moisture)
+    params.permit(:soil_moisture, :temperature, :humidity)
   end
 
   def set_garden
