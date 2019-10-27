@@ -23,7 +23,9 @@ module GardenPiBe
     config.load_defaults 5.2
 
     # config.time_zone = "America/Denver"
-    config.active_record.default_timezone = :local
+    # config.active_record.default_timezone = :local
+    config.time_zone = 'Mountain Time (US & Canada)'
+    config.active_record.default_timezone = :utc
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

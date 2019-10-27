@@ -16,12 +16,12 @@ ActiveRecord::Schema.define(version: 2019_10_27_000947) do
   enable_extension "plpgsql"
 
   create_table "env_measurements", force: :cascade do |t|
-    t.float "soil_moisture"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.bigint "garden_id"
+    t.float "soil_moisture"
     t.float "temperature"
     t.float "humidity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["garden_id"], name: "index_env_measurements_on_garden_id"
   end
 
