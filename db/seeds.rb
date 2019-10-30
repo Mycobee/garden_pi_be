@@ -14,7 +14,7 @@ forty_days_ago = now - 3456900
 x = 0
 
 until now == forty_days_ago
-  garden.env_measurements.create!(soil_temperature: rand(20..100), soil_moisture: rand(0..100), created_at: x.minutes.ago)
+  garden.env_measurements.create!(humidity: rand(10..60), temperature: rand(20..100), soil_moisture: rand(0..100), created_at: x.minutes.ago)
   now = now - 900
   x = x - 15
 end
